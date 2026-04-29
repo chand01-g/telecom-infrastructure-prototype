@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dbss-provisioning
+  namespace: default
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: dbss-provisioning
+  template:
+    metadata:
+      labels:
+        app: dbss-provisioning
+    spec:
+      containers:
+      - name: provisioning-api
+        image: nginx:alpine
+        ports:
+        - containerPort: 80
